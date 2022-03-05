@@ -10,21 +10,30 @@ void main() {
         input + 1, (i) => List.filled((input * 2) + 1, ' ', growable: false),
         growable: false);
     int inc = 1;
-    int dec = input;
+    int dec = 9;
+    if (input > 9) {
+      dec = 9;
+    } else {
+      dec = input;
+    }
 
     for (int i = 0; i < input; i++) {
       for (int j = 0; j < (input * 2); j++) {
         if (j < input - i) {
           list[i][j] = inc.toString();
           inc++;
-          if (inc > 4) {
+          if (inc > input || inc > 9) {
             inc = 1;
           }
         } else if (j >= input + i) {
           list[i][j] = dec.toString();
           dec--;
           if (dec < 1) {
-            dec = input;
+            if (input > 9) {
+              dec = 9;
+            } else {
+              dec = input;
+            }
           }
         }
       }
